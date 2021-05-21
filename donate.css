@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --hover-width: 75%;
+  --hover-other-width: 25%;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+/************
+ general style
+************/
+
+.split h2 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f9f9f9;
+  color: #333;
+  text-decoration: 0;
+  border-radius: 3px;
+  transition: all .3s ease;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: orange;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: hsl(157, 81%, 61%);
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-secondary:hover, 
+.btn-secondary:focus{
+  transform: translateY(-3px) scale(1.1);
+}
+
+/********
+ LAYOUT 
+ ********/
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.split.left,
+.split.right {
+  transition: all 1s ease-in-out;
+}
+
+.split.left {
+  background: teal;
+}
+
+.split.right {
+  background: skyblue;
+}
+
+.hover-left .left,
+.hover-right .right {
+  width: var(--hover-width);
+}
+
+.hover-left .right,
+.hover-right .left {
+  width: var(--hover-other-width);
+}
+
+.hover-left .right *,  
+.hover-right .left * {
+  opacity: 0;
+  transition: opacity 250ms ease 500ms
+}  
+
+@media (max-width: 720px){
+
+  :root {
+    --hover-height: 95%;
+    --hover-other-height: 5%;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .split.left,
+  .split.right {
+    width: 100%;
+  }
+
+  .hover-left .left,
+  .hover-right .right {
+    height: var(--hover-height);
+  }
+
+  .hover-left .right,
+  .hover-right .left {
+    height: var(--hover-other-height);
+  }
+
+}
